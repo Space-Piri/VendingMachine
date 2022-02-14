@@ -1,0 +1,4 @@
+C:\Users\Student-SP4\Desktop\VendingMachine\obj\Release\net5.0-windows\MainWindow.g.cs
+C:\Users\Student-SP4\Desktop\VendingMachine\obj\Release\net5.0-windows\App.g.cs
+C:\Users\Student-SP4\Desktop\VendingMachine\obj\Release\net5.0-windows\VendingMachine_MarkupCompile.cache
+C:\Users\Student-SP4\Desktop\VendingMachine\obj\Release\net5.0-windows\VendingMachine_MarkupCompile.lref

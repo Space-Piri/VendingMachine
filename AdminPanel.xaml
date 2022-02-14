@@ -1,0 +1,125 @@
+﻿<Window x:Class="VendingMachine.AdminPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VendingMachine"
+        mc:Ignorable="d"
+        Title="Административная панель" SizeToContent="Height" Width="600">
+    <StackPanel>
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <Label Content="Монеты"/>
+                </TabItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="Gold" BorderThickness="0" Grid.Column="0" Grid.Row="0" Width="50" Height="50" CornerRadius="100" Margin="5">
+                        <Label Content="1 руб." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBox x:Name="oneText" Grid.Column="0" Grid.Row="1" Width="50" Margin="5"/>
+                    <CheckBox x:Name="oneCheck" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                    <Border Background="Gold" BorderThickness="0" Grid.Column="1" Grid.Row="0" Width="50" Height="50" CornerRadius="100" Margin="5">
+                        <Label Content="2 руб." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBox x:Name="twoText" Grid.Column="1" Grid.Row="1" Width="50" Margin="5"/>
+                    <CheckBox x:Name="twoCheck" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                    <Border Background="Gold" BorderThickness="0" Grid.Column="2" Grid.Row="0" Width="50" Height="50" CornerRadius="100" Margin="5">
+                        <Label Content="5 руб." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBox x:Name="fiveText" Grid.Column="2" Grid.Row="1" Width="50" Margin="5"/>
+                    <CheckBox x:Name="fiveCheck" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center"/>
+
+                    <Border Background="Gold" BorderThickness="0" Grid.Column="3" Grid.Row="0" Width="50" Height="50" CornerRadius="100" Margin="5">
+                        <Label Content="10 руб." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBox x:Name="tenText" Grid.Column="3" Grid.Row="1" Width="50" Margin="5"/>
+                    <CheckBox x:Name="tenCheck" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center"/>
+                    <Button x:Name="coinsSave" Content="Сохранить" Grid.Row="3" Grid.ColumnSpan="4" Width="100" Margin="10" Click="coinsSave_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <Label Content="Напитки"/>
+                </TabItem.Header>
+                <ListBox SelectionChanged="DrinksList_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Disabled" Width="375" Margin="16,10,0,0" Background="Transparent" x:Name="DrinksList" Focusable="False" HorizontalAlignment="Center" BorderThickness="0" >
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="2" Width="100" Focusable="False" BorderBrush="Black" CornerRadius="5">
+                                <Border.Style>
+                                    <Style>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                <Setter Property="Border.Background" Value="Transparent"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                                <Setter Property="Border.Background" Value="LightGray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <StackPanel Focusable="False" MouseUp="StackPanel_MouseUp">
+                                    <Image Source="{Binding Drinks.Image}" HorizontalAlignment="Center" Focusable="False" Height="100">
+                                        <Image.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                        <Setter Property="Image.Opacity" Value="1"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                                        <Setter Property="Image.Opacity" Value="0.5"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                    <TextBlock Text="{Binding Drinks.Name}" HorizontalAlignment="Center" Focusable="False"/>
+                                    <TextBlock HorizontalAlignment="Center" Focusable="False">
+                                        <TextBlock.Style>
+                                            <Style>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="True">
+                                                        <Setter Property="TextBlock.Text" Value="{Binding Drinks.Cost}"/>
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding IsActive}" Value="False">
+                                                        <Setter Property="TextBlock.Text" Value="Нет в наличии"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                </ListBox>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <Label Content="Отчёт"/>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
+</Window>

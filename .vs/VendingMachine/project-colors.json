@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "68c55ebe-0ba8-437d-8ad1-758e64348fa1": {
+      "ProjectGuid": "68c55ebe-0ba8-437d-8ad1-758e64348fa1",
+      "DisplayName": "VendingMachine",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

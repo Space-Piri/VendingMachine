@@ -1,0 +1,26 @@
+﻿<Window x:Class="VendingMachine.AdminLogin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VendingMachine"
+        mc:Ignorable="d"
+        Title="Вход в панель администратора" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Логин" Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="login" Grid.Row="0" Grid.Column="1" Width="150" Margin="5"/>
+        <Label Content="Пароль" Grid.Row="1" Grid.Column="0"/>
+        <PasswordBox x:Name="password" Grid.Row="1" Grid.Column="1" Width="150" Margin="5" PasswordChar="*"/>
+        <Button x:Name="cancel" Content="Отмена" Background="Red" Grid.Row="2" Grid.Column="0" Width="100" Click="cancel_Click" Margin="5"/>
+        <Button x:Name="enter" Content="Войти" Background="Green" Grid.Row="2" Grid.Column="1" Width="100" HorizontalAlignment="Right" Click="enter_Click" Margin="5"/>
+    </Grid>
+</Window>
